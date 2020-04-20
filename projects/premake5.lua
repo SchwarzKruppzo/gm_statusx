@@ -19,8 +19,12 @@ include(gmcommon)
 
 CreateWorkspace({name = "statusx", allow_debug = false})
 	filter("system:macosx")
-		buildoptions("-mmacosx-version-min=10.5")
-		linkoptions("-mmacosx-version-min=10.5")
+		buildoptions{"-mmacosx-version-min=10.5 -std=c++11 -fPIC}
+		linkoptions{"-mmacosx-version-min=10.5 -fPIC -static-libstdc++}
+
+	filter("system:linux")
+		buildoptions{"-std=c++11 -fPIC"}
+		linkoptions{"-fPIC -static-libstdc++"}
 
 	CreateProject({serverside = true})
 		warnings("Default")
@@ -28,5 +32,4 @@ CreateWorkspace({name = "statusx", allow_debug = false})
 		IncludeScanning()
 		IncludeDetouring()
 		IncludeSDKCommon()
-		IncludeSDKTier0()
 		IncludeSDKTier1()

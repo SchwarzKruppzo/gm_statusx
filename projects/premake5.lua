@@ -17,10 +17,10 @@ end
 
 include(gmcommon)
 
-CreateWorkspace({name = "statusx", allow_debug = false})
+CreateWorkspace({name = "statusx", abi_compatible = true})
 	filter("system:macosx")
-		buildoptions{"-mmacosx-version-min=10.5 -std=c++11 -fPIC}
-		linkoptions{"-mmacosx-version-min=10.5 -fPIC -static-libstdc++}
+		buildoptions{"-mmacosx-version-min=10.5 -std=c++11 -fPIC"}
+		linkoptions{"-mmacosx-version-min=10.5 -fPIC -static-libstdc++"}
 
 	filter("system:linux")
 		buildoptions{"-std=c++11 -fPIC"}
